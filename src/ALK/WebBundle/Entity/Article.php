@@ -7,18 +7,19 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Translatable\Translatable;
 
 
+//@Gedmo\TranslationEntity(class="ALK\WebBundle\Entity\Translation\ArticleTranslation")
 /**
  * Article
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="ALK\WebBundle\Entity\ArticleRepository")
+ * 
  */
 class Article /*implements Translatable*/
 {
     /**
      * @var integer
      *
-     * @Gedmo\Slug(fields={"title"}, updatable=true, separator="_")
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,7 +29,6 @@ class Article /*implements Translatable*/
     /**
      * @var string
      *
-     * @Gedmo\Translatable
      * @ORM\Column(name="title", type="string", length=255)
      * @Gedmo\Translatable
      */
@@ -37,7 +37,6 @@ class Article /*implements Translatable*/
     /**
      * @var string
      *
-     * @Gedmo\Translatable
      * @ORM\Column(name="Body", type="text")
      * @Gedmo\Translatable
      */
@@ -50,9 +49,22 @@ class Article /*implements Translatable*/
      */
     private $Date;
 
+     /**
+     * @ORM\OneToMany(
+     *     targetEntity="Translation\ArticleTranslation",
+     *  mappedBy="object",
+     *  cascade={"persist", "remove"}
+     * )
+     * 
+     */
+    private $translations;
+// @Assert\Valid(deep = true)
+
+
     public function __construct()
     {
         $this->Date = new \Datetime();
+        $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -134,5 +146,50 @@ class Article /*implements Translatable*/
         return $this->Date;
     }
 
+
+    /**
+     * Set translations
+     *
+     * @param ArrayCollection $translations
+     * @return Product
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
+        return $this;
+    }
+
+    /**
+     * Get translations
+     *
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * Add translation
+     *
+     * @param ProductTranslation
+     */
+    public function addTranslation($translation)
+    {
+        if ($translation->getContent()) {
+            $translation->setObject($this);
+            $this->translations->add($translation);
+        }
+    }
+
+    /**
+     * Remove translation
+     *
+     * @param ProductTranslation
+     */
+    public function removeTranslation($translation)
+    {
+        $this->translations->removeElement($translation);
+    }
 
 }

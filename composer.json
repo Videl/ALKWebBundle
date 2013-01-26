@@ -1,6 +1,6 @@
 {
     "name": "symfony/framework-standard-edition",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "Videl's Symfony edition, with Translation Bundles",
     "autoload": {
         "psr-0": { "": "src/" }
     },
