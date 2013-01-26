@@ -1,6 +1,6 @@
 <?php
 
-namespace Entity\Translation;
+namespace ALK\WebBundle\Entity\Translation;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation;
@@ -17,7 +17,7 @@ use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation;
 class ArticleTranslation extends AbstractPersonalTranslation
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Entity\Article", inversedBy="translations")
+     * @ORM\ManyToOne(targetEntity="ALK\WebBundle\Entity\Article", inversedBy="translations")
      * @ORM\JoinColumn(name="object_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $object;

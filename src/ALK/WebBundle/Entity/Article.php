@@ -5,17 +5,17 @@ namespace ALK\WebBundle\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Translatable\Translatable;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
-//@Gedmo\TranslationEntity(class="ALK\WebBundle\Entity\Translation\ArticleTranslation")
 /**
  * Article
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="ALK\WebBundle\Entity\ArticleRepository")
- * 
+ * @Gedmo\TranslationEntity(class="ALK\WebBundle\Entity\Translation\ArticleTranslation")
  */
-class Article /*implements Translatable*/
+class Article
 {
     /**
      * @var integer
@@ -51,14 +51,13 @@ class Article /*implements Translatable*/
 
      /**
      * @ORM\OneToMany(
-     *     targetEntity="Translation\ArticleTranslation",
+     *     targetEntity="ALK\WebBundle\Entity\Translation\ArticleTranslation",
      *  mappedBy="object",
      *  cascade={"persist", "remove"}
      * )
-     * 
+     * @Assert\Valid(deep = true)
      */
     private $translations;
-// @Assert\Valid(deep = true)
 
 
     public function __construct()
