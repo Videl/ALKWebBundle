@@ -1,0 +1,8 @@
+{% extends 'ALKWebBundle::weblayout.html.twig' %}
+
+{% block body %}
+	<div class="hero-unit">
+		<p><h1>{{ article.Title }}</h1> écrit le {{ article.Date|date("d/m/y") }}</p>
+		<p>{{ article.Body }}</p>
+	</div>
+{% endblock %}

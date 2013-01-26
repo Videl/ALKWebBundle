@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <!-- Bootstrap -->
+
+        {% stylesheets '@ALKWebBundle/Resources/public/bootstrap/css/bootstrap.min.css'
+                       '@ALKWebBundle/Resources/public/bootstrap/css/fix.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}" media="screen" />
+        {% endstylesheets %}
+    </head>
+    <body>
+        {% block navbar %}
+        {% endblock %}
+
+        <div class="fluid">
+        {% block body %}
+        {% endblock %}
+        </div>
+
+
+        {% javascripts
+            '@ALKWebBundle/Resources/public/bootstrap/js/bootstrap.min.js'
+            'http://code.jquery.com/jquery-latest.js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    </body>
+</html>
