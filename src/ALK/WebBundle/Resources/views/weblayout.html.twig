@@ -16,7 +16,9 @@
               <p>
             Change locale :
             {% for locale in locales %}
+            {% if locale == app.request.locale %}[{% endif %}
             <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">{{ locale }}</a>
+            {% if locale == app.request.locale %}]{% endif %}
             {% endfor %}
           </p>
           </div>

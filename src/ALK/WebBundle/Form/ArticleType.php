@@ -12,18 +12,20 @@ class ArticleType extends AbstractType
 {
 
     protected $myLocale;
+    protected $allLanguages;
 
 
-    public function __construct($var = "fr")
+    public function __construct($var = "fr", $allLanguages = array('fr', 'en'))
     {
         $this->myLocale = $var;
+        $this->allLanguages = $allLanguages;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $correctedLanguages = "";
 
-        $languages = array('en', 'fr', 'ru');
+        $languages = $this->allLanguages;
         foreach($languages as $lang)
         {
             if($lang != $this->myLocale)
@@ -38,8 +40,12 @@ class ArticleType extends AbstractType
             ->add('Body')
             ->add('Date', 'date', array('widget' => 'single_text'))
             ->add('translations', 'a2lix_translations', array(
-                'locales' => $correctedLanguages))
-        ;
+                'locales' => $correctedLanguages,
+                // 'locales' => $this->allLanguages,
+                'attr' => array(
+                    'class' => 'span8')
+                )
+            );
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

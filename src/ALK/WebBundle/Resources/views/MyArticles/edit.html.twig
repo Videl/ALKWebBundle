@@ -3,18 +3,21 @@
 {% block body %}
 	<div class="hero-unit">
 
-		<h1>Article/{{ article.id ? 'Edit' : 'Create' }}</h1>
+		<h1>Article/{{ article.id ? 'Edit' : 'Create' }}/{{ app.request.locale }}</h1>
 
-<form action="{{ article.id ? path('alk_editarticle', { 'id': article.id }) : path('alk_newarticle') }}" method="post" {{ form_enctype(editForm) }} id="productForm">
+<form action="{{ article.id ? path('alk_editarticle', { 'id': article.id }) : path('alk_newarticle') }}" method="post" {{ form_enctype(editForm) }} id="articleForm">
     
-    {{ form_row(editForm.title) }}
-    {{ form_row(editForm.Body) }}
-    {{ form_row(editForm.translations) }}
+    {#}
+    {{ form_row(editForm.title, { 'attr': {'class': 'span4'} }) }}
+    {{ form_row(editForm.Body, { 'attr': {'class': 'span8'} }) }}
+
+    {{ form_row(editForm.translations, { 'attr': {'class': 'span8'}}) }}{#}
     
 
-    {# Other render : 
-    {{ form_widget(editForm.translations, {fields : [editForm.title, editForm.Body]}) }}
-    #}
+    {# Other render :
+    {{ form_widget(editForm.translations, {fields : [editForm.title, editForm.Body]  #}
+    {{ form_widget(editForm.translations, {'attr': {'class': ['span8', 'input-xlarge'] }}) }}
+    {##}
 
     {{ form_rest(editForm) }}    
         
@@ -39,16 +42,17 @@
     {% endif %}
 </ul>
 
+    </div>
 {% endblock %}
 
-{% block javascripts %}
+{% block javascripts_more %}
 {{ parent() }}
 <script type="text/javascript">
     a2lix_libJS.translationsTabsModule.init({
         activeLocale : "{{ app.request.locale }}"
     });
     a2lix_libJS.collectionModule.init({
-        $context : $('#productForm'),
+        $context : $('#articleForm'),
         callbacks : {
             afterAddEntry : function($newEntry) {
                 a2lix_libJS.translationsTabsModule.init({
@@ -58,7 +62,4 @@
         }
     });
 </script>
-
-	</div>
-
 {% endblock %}

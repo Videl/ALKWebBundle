@@ -14,8 +14,10 @@ use ALK\WebBundle\Form\ArticleType;
  */
 class MyArticleController extends Controller
 {
-	public function showAction($id, $locale = 'fr')
+	public function showAction($id, $_locale)
 	{
+        // var_dump($this->getRequest()->getLocale());
+        $this->getRequest()->setLocale($_locale);
 		$em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('ALKWebBundle:Article')->find($id);
@@ -49,7 +51,7 @@ class MyArticleController extends Controller
         }
 
         $request = $this->getRequest();
-        $editForm = $this->createForm(new ArticleType($request->getLocale()), $entity);
+        $editForm = $this->createForm(new ArticleType($request->getLocale(), $this->container->getParameter("languages")), $entity);
         if ('POST' === $request->getMethod()) {
             $editForm->bindRequest($request);
 

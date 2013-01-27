@@ -6,12 +6,6 @@ alk_article:
     pattern:  /read/{id}
     defaults: { _controller: ALKWebBundle:MyArticle:show }
 
-alk_article_locale:
-    pattern:   /read/{id}/in/{_locale}
-    defaults:  { _controller: ALKWebBundle:MyArticle:show, _locale: fr }
-    # requirements:
-    #   _locale: en|fr|ru
-
 alk_newarticle:
     pattern: /myarticle/new
     defaults: { _controller: ALKWebBundle:MyArticle:edit }
