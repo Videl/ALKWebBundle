@@ -5,7 +5,8 @@
         <!-- Bootstrap -->
 
         {% stylesheets '@ALKWebBundle/Resources/public/bootstrap/css/bootstrap.min.css'
-                       '@ALKWebBundle/Resources/public/bootstrap/css/fix.css' %}
+                       '@ALKWebBundle/Resources/public/bootstrap/css/fix.css'
+                       '@ALKWebBundle/Resources/public/alix/css/a2lix_translation.css' %}
             <link rel="stylesheet" href="{{ asset_url }}" media="screen" />
         {% endstylesheets %}
     </head>
@@ -21,8 +22,11 @@
 
         {% javascripts
             '@ALKWebBundle/Resources/public/bootstrap/js/bootstrap.min.js'
-            'http://code.jquery.com/jquery-latest.js' %}
+            'http://code.jquery.com/jquery-latest.js'
+            '@ALKWebBundle/Resources/public/alix/js/a2lix_translation.js' %}
             <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>

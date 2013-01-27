@@ -4,18 +4,27 @@ alk_web_homepage:
 
 alk_article:
     pattern:  /read/{id}
-    defaults: { _controller: ALKWebBundle:Default:viewArticle }
+    defaults: { _controller: ALKWebBundle:MyArticle:show }
 
 alk_article_locale:
     pattern:   /read/{id}/in/{_locale}
-    defaults:  { _controller: ALKWebBundle:Default:viewArticle, _locale: fr }
+    defaults:  { _controller: ALKWebBundle:MyArticle:show, _locale: fr }
     # requirements:
     #   _locale: en|fr|ru
+
+alk_newarticle:
+    pattern: /myarticle/new
+    defaults: { _controller: ALKWebBundle:MyArticle:edit }
+
+alk_editarticle:
+    pattern: /myarticle/edit/{id}
+    defaults: { _controller: ALKWebBundle:MyArticle:edit }
+
+alk_deletearticle:
+    pattern: /myarticle/del/{id}
+    defaults: { _controller: ALKWebBundle:MyArticle:remove }
 
 ALKWebBundle_article:
         resource: "@ALKWebBundle/Resources/config/routing/article.yml"
         prefix:   /article
 
-test:
-    pattern:	/test/
-    defaults: { _controller: ALKWebBundle:Default:filler }

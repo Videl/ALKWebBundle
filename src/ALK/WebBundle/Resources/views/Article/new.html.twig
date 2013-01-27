@@ -1,3 +1,5 @@
+{% extends 'ALKWebBundle::weblayout.html.twig' %}
+{% block body %}
 <h1>Article creation</h1>
 
 <form action="{{ path('article_create') }}" method="post" {{ form_enctype(form) }}>
@@ -14,3 +16,4 @@
         </a>
     </li>
 </ul>
+{% endblock %}
