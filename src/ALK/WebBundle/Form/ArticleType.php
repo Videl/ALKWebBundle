@@ -27,7 +27,7 @@ class ArticleType extends AbstractType
             ->add('Body')
             ->add('Date')
             ->add('translations', 'a2lix_translations', array(
-                'locales' => array('en', 'ru')))
+                'locales' => array('en', 'fr', 'ru')))
         ;
     }
 
