@@ -6,11 +6,13 @@
 		<h1>Article/{{ article.id ? 'Edit' : 'Create' }}</h1>
 
 <form action="{{ article.id ? path('alk_editarticle', { 'id': article.id }) : path('alk_newarticle') }}" method="post" {{ form_enctype(editForm) }} id="productForm">
+    
     {{ form_row(editForm.title) }}
     {{ form_row(editForm.Body) }}
     {{ form_row(editForm.translations) }}
-      
-    {# Other render :
+    
+
+    {# Other render : 
     {{ form_widget(editForm.translations, {fields : [editForm.title, editForm.Body]}) }}
     #}
 

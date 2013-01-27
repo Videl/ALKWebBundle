@@ -48,8 +48,8 @@ class MyArticleController extends Controller
             $entity = new Article();
         }
 
-        $editForm = $this->createForm(new ArticleType(), $entity);
         $request = $this->getRequest();
+        $editForm = $this->createForm(new ArticleType($request->getLocale()), $entity);
         if ('POST' === $request->getMethod()) {
             $editForm->bindRequest($request);
 

@@ -11,23 +11,34 @@ use Symfony\Component\HttpFoundation\Request;
 class ArticleType extends AbstractType
 {
 
-    protected $request;
+    protected $myLocale;
 
-    public function __constructor($req) 
+
+    public function __construct($var = "fr")
     {
-        $this->request = $req;
+        $this->myLocale = $var;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $correctedLanguages = "";
+
+        $languages = array('en', 'fr', 'ru');
+        foreach($languages as $lang)
+        {
+            if($lang != $this->myLocale)
+                $correctedLanguages = $correctedLanguages . $lang . ' ';
+        }
+        $correctedLanguages = trim($correctedLanguages);
+        $correctedLanguages = explode(" ", $correctedLanguages);
 
         $builder
             ->add('title', null, array(
                 'label' => "Title"))
             ->add('Body')
-            ->add('Date')
+            ->add('Date', 'date', array('widget' => 'single_text'))
             ->add('translations', 'a2lix_translations', array(
-                'locales' => array('en', 'fr', 'ru')))
+                'locales' => $correctedLanguages))
         ;
     }
 
@@ -43,4 +54,6 @@ class ArticleType extends AbstractType
     {
         return 'alk_webbundle_articletype';
     }
+
+
 }
