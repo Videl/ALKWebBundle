@@ -7,7 +7,7 @@
 
 <form action="{{ article.id ? path('alk_editarticle', { 'id': article.id }) : path('alk_newarticle') }}" method="post" {{ form_enctype(editForm) }} id="articleForm">
     
-    {#}
+    {##}
     {{ form_row(editForm.title, { 'attr': {'class': 'span4'} }) }}
     {{ form_row(editForm.Body, { 'attr': {'class': 'span8'} }) }}
 
@@ -15,7 +15,7 @@
     
 
     {# Other render :
-    {{ form_widget(editForm.translations, {fields : [editForm.title, editForm.Body]  #}
+    {{ form_widget(editForm.translations, {fields : [editForm.title, editForm.Body]  }
     {{ form_widget(editForm.translations, {'attr': {'class': ['span8', 'input-xlarge'] }}) }}
     {##}
 

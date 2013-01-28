@@ -35,6 +35,12 @@ class MyArticleController extends Controller
 
 	public function editAction($id = null)
 	{
+        // Force defaultLocale into the translatableListener (Can be set by AOP for all new/edit method)
+
+        $translatableListener = $this->get('stof_doctrine_extensions.listener.translatable');
+        //$translatableListener->setTranslatableLocale($translatableListener->getDefaultLocale());
+        $translatableListener->setTranslatableLocale("fr");
+
 		$em = $this->getDoctrine()->getManager();
 
 		if($id)
@@ -51,7 +57,7 @@ class MyArticleController extends Controller
         }
 
         $request = $this->getRequest();
-        $editForm = $this->createForm(new ArticleType($request->getLocale(), $this->container->getParameter("languages")), $entity);
+        $editForm = $this->createForm(new ArticleType(/*$request->getLocale(), $this->container->getParameter("languages")*/), $entity);
         if ('POST' === $request->getMethod()) {
             $editForm->bindRequest($request);
 

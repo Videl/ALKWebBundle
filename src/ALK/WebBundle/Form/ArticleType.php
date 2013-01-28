@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ArticleType extends AbstractType
 {
-
+    /*
     protected $myLocale;
     protected $allLanguages;
 
@@ -19,32 +19,29 @@ class ArticleType extends AbstractType
     {
         $this->myLocale = $var;
         $this->allLanguages = $allLanguages;
-    }
+    }*/
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $correctedLanguages = "";
+        // $correctedLanguages = "";
 
-        $languages = $this->allLanguages;
-        foreach($languages as $lang)
-        {
-            if($lang != $this->myLocale)
-                $correctedLanguages = $correctedLanguages . $lang . ' ';
-        }
-        $correctedLanguages = trim($correctedLanguages);
-        $correctedLanguages = explode(" ", $correctedLanguages);
+        // $languages = $this->allLanguages;
+        // foreach($languages as $lang)
+        // {
+        //     if($lang != $this->myLocale)
+        //         $correctedLanguages = $correctedLanguages . $lang . ' ';
+        // }
+        // $correctedLanguages = trim($correctedLanguages);
+        // $correctedLanguages = explode(" ", $correctedLanguages);
 
         $builder
-            ->add('title', null, array(
-                'label' => "Title"))
+            ->add('title')
             ->add('Body')
             ->add('Date', 'date', array('widget' => 'single_text'))
-            ->add('translations', 'a2lix_translations', array(
-                'locales' => $correctedLanguages,
-                // 'locales' => $this->allLanguages,
-                'attr' => array(
-                    'class' => 'span8')
-                )
+            ->add('translations', 'a2lix_translations'/*, array(
+                //'locales' => $correctedLanguages,
+                 'locales' => $this->allLanguages
+                )*/
             );
     }
 
