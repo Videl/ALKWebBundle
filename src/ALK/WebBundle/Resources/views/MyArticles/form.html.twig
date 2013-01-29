@@ -11,23 +11,3 @@
 {% endspaceless %}
 {% endblock form_row %}
 
-
-
-{# CUSTOM - product form #}
-
-{% block _product_categories_widget %}
-<div id="{{ form.vars.id }}" class="a2lix_collection">
-    {% for collection_entry in form %}
-        {{ form_widget(collection_entry) }}
-    {% endfor %}
-    <a href="#" data-collection-act="add" data-collection-tpl="#a2lix_collectionEntryCategoryTpl">Add a category</a>
-</div>
-{% endblock %}
-
-{% block _product_categories_entry_widget %}
-<div class="a2lix_collectionEntry">
-    {{ form_row(form.translations, {fields : [form.title]}) }}
-    {{ form_row(form.isMain) }}
-    <a href="#" data-collection-act="delete">Delete</a>
-</div>
-{% endblock %}

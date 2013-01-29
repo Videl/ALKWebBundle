@@ -16,8 +16,7 @@ class MyArticleController extends Controller
 {
 	public function showAction($id, $_locale)
 	{
-        // var_dump($this->getRequest()->getLocale());
-        $this->getRequest()->setLocale($_locale);
+
 		$em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('ALKWebBundle:Article')->find($id);
@@ -38,8 +37,7 @@ class MyArticleController extends Controller
         // Force defaultLocale into the translatableListener (Can be set by AOP for all new/edit method)
 
         $translatableListener = $this->get('stof_doctrine_extensions.listener.translatable');
-        //$translatableListener->setTranslatableLocale($translatableListener->getDefaultLocale());
-        $translatableListener->setTranslatableLocale("fr");
+        $translatableListener->setTranslatableLocale($translatableListener->getDefaultLocale());
 
 		$em = $this->getDoctrine()->getManager();
 
