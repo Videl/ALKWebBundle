@@ -1,5 +1,5 @@
 {
-    "name": "symfony/framework-standard-edition",
+    "name": "alk/alk-site-bundle",
     "description": "Videl's Symfony edition, with Translation Bundles",
     "autoload": {
         "psr-0": { "": "src/" }
