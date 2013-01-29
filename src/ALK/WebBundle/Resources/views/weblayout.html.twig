@@ -9,12 +9,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">Project name</a>
+      <a class="brand" href="#">{% trans %}Nom du projet{% endtrans %}</a>
       <div class="nav-collapse collapse">
         {% block changeLocale %}
             <div class="navbar-text pull-right">
               <p>
-            Change locale :
+            {% trans %}Changer la langue{% endtrans %} :
             {% for locale in locales %}
             {% if locale == app.request.locale %}[{% endif %}
             <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">{{ locale }}</a>
@@ -24,9 +24,9 @@
           </div>
         {% endblock %}
         <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li class="active"><a href="#">{% trans %}Accueil{% endtrans %}</a></li>
+          <li><a href="#about">{% trans %}En savoir plus{% endtrans %}</a></li>
+          <li><a href="#contact">{% trans %}Contact{% endtrans %}</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

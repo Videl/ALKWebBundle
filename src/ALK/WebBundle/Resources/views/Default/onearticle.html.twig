@@ -2,14 +2,15 @@
 
 {% block body %}
 	<div class="hero-unit">
-		<p><h1>{{ article.Title }}</h1> écrit le {{ article.Date|date("d/m/y") }}</p>
+		<p><h2>{{ article.Title }}</h2> {% trans %}écrit le{% endtrans %} {{ article.Date|date("d/m/y") }}</p>
 		<p>{{ article.Body|raw }}</p>
 	</div>
-	<p>
-	    <form action="{{ path('article_delete', { 'id': article.id }) }}" method="post">
+	<p><ul>
+	    <li><form action="{{ path('article_delete', { 'id': article.id }) }}" method="post">
 	        {{ form_widget(delete_form) }}
-	        <button type="submit">Delete</button>
-	    </form> - <a href="{{ path('alk_editarticle', { 'id': article.id }) }}">Edit</a>
+	        <button type="submit">{% trans %}Supprimer{% endtrans %}</button>
+	    </form></li>
+	    <li><a href="{{ path('alk_editarticle', { 'id': article.id }) }}">{% trans %}Modifier{% endtrans %}</a></li>
 	</p>
 
 {% endblock %}

@@ -4,7 +4,7 @@
 {% block body %}
 	<div class="hero-unit">
 
-		<h1>Article/{{ article.id ? 'Edit' : 'Create' }}</h1>
+		<h1>Article/{{ article.id ? 'Modifier'|trans : 'Créer'|trans }}</h1>
 
 <form action="{{ article.id ? path('alk_editarticle', { 'id': article.id }) : path('alk_newarticle') }}" method="post" {{ form_enctype(editForm) }} id="articleForm">
     
@@ -23,21 +23,21 @@
     {{ form_rest(editForm) }}    
         
     <p>
-        <button type="submit">{{ article.id ? 'Edit' : 'Create' }}</button>
+        <button type="submit">{{ article.id ? 'Modifier'|trans : 'Créer'|trans }}</button>
     </p>
 </form>
 
 <ul class="record_actions">
     <li>
         <a href="{{ path('alk_web_homepage') }}">
-            Back to the list
+            {% trans %}Retour à la liste{% endtrans %}
         </a>
     </li>
     {% if article.id %}
     <li class="delete">
         <form action="{{ path('alk_deletearticle', { 'id': article.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button type="submit">{% trans %}Supprimer{% endtrans %}</button>
         </form>
     </li>
     {% endif %}
