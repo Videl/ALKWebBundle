@@ -9,6 +9,7 @@
                        '@ALKWebBundle/Resources/public/alix/css/a2lix_translation.css' %}
             <link rel="stylesheet" href="{{ asset_url }}" media="screen" />
         {% endstylesheets %}
+        <link rel="alternate" type="application/rss+xml" title="Videled's {{ app.request.locale }} Articles" href="{{ url('alk_article_rss') }}" />
     </head>
     <body>
         {% block navbar %}

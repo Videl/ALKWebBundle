@@ -2,8 +2,15 @@
 
 {% block body %}
 	<div class="hero-unit">
-		<p><h2>{{ article.Title }}</h2> {% trans %}écrit le{% endtrans %} {{ article.Date|date("d/m/y") }}</p>
-		<p>{{ article.Body|raw }}</p>
+		<p><h2>{{ article.title }}</h2> {% trans %}écrit le{% endtrans %} {{ article.Date|date("d/m/y") }}</p>
+		<p>
+			{% if article.Body is not empty %}
+				{{ article.Body|raw }}
+			{% else %}
+				{% trans %}Désolé, cette page n'existe pas encore dans votre langue.<br />
+				Souhaitez-vous proposer une traduction ?{% endtrans %}
+			{% endif %}
+		</p>
 	</div>
 	<p><ul>
 	    <li><form action="{{ path('article_delete', { 'id': article.id }) }}" method="post">
