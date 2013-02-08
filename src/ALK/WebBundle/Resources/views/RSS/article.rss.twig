@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<rss version="2.0">
+    <channel>
+        <title><![CDATA[Videl's RSS]]></title>
+        <description>Articles en fr</description>
+        <lastBuildDate>Fri, 08 Feb 2013 13:33:01 GMT</lastBuildDate>
+        <link>{{ url('alk_web_homepage') }}</link>
+
+        {% for article in articles %}
+        <item>
+            <title><![CDATA[{{article.title}}]]></title>
+            <description><![CDATA[{{article.body}}]]></description>
+            
+            <pubDate>{{ article.date|date("D, d M Y") }}</pubDate>
+            <link>{{ url('alk_article', {'id': article.id}) }}</link>
+        </item>
+        {% endfor %}
+<!--<pubDate>Sat, 07 Sep 2002 00:00:01 GMT</pubDate> -->
+    </channel>
+</rss>

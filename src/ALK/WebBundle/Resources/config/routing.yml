@@ -22,3 +22,6 @@ ALKWebBundle_article:
         resource: "@ALKWebBundle/Resources/config/routing/article.yml"
         prefix:   /article
 
+alk_article_rss:
+    pattern: /myarticle/rss
+    defaults: { _controller: ALKWebBundle:RSS:articleRssGenerate }
