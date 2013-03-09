@@ -11,7 +11,6 @@
     {##}
     {{ form_row(editForm.title) }}
     {{ form_row(editForm.Body) }}
-
     {{ form_row(editForm.translations) }}{#}
     
 
@@ -49,5 +48,18 @@
 {% block javascripts_more %}
 {{ parent() }}
 <script type="text/javascript">
+    a2lix_libJS.translationsTabsModule.init({
+        activeLocale : "{{ app.request.locale }}"
+    });
+    a2lix_libJS.collectionModule.init({
+        $context : $('#articleForm'),
+        callbacks : {
+            afterAddEntry : function($newEntry) {
+                a2lix_libJS.translationsTabsModule.init({
+                    $context : $newEntry
+                });
+            }
+        }
+    });
 </script>
 {% endblock %}
