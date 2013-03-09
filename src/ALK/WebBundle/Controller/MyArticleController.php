@@ -26,9 +26,10 @@ class MyArticleController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ALKWebBundle:MyArticles:onearticle.html.twig', array(
+        return $this->render('ALKWebBundle:MyArticles:showpageadmin.html.twig', array(
             'article'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView(),        
+            ));
 	}
 
 	public function editAction($id = null)
@@ -82,9 +83,23 @@ class MyArticleController extends Controller
 		return $this->redirect($this->generateUrl('alk_web_homepage'));
 	}
 
-    public function listAllAction()
+    public function listAllAction($tag)
     {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repository = $em->getRepository('ALKWebBundle:Article');
 
+        if($tag == "Default")
+        {
+            $articles = $repository->myFindAllArticles();
+
+        } else
+        {
+            $articles = $repository->myFindByTags(array($tag));
+        }
+
+        return $this->render('ALKWebBundle:MyArticles:showallarticles.html.twig', array(
+            'articles' => $articles
+            ));
     }
 
 

@@ -49,7 +49,7 @@ class ArticleRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('a');
 
-        $qb ->join('a.tags', 't')
+        $qb ->join('a.category', 't')
             ->where($qb->expr()->in('t.name', $nom_tags))
             ->add('orderBy', 'a.id DESC');
 

@@ -1,0 +1,17 @@
+{% extends 'ALKWebBundle::weblayout.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+	<div class="hero-unit">
+		{% include 'ALKWebBundle:MyArticles:onearticle.html.twig' %}
+	</div>
+	<p>
+		<ul>
+			<li>
+				<a href="{{ path('alk_editarticle', { 'id': article.id }) }}">{% trans %}Modifier{% endtrans %}</a>
+			</li>
+		</ul>
+	</p>
+
+{% endblock %}

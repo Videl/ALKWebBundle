@@ -5,6 +5,8 @@ alk_web_homepage:
 alk_article:
     pattern:  /page/{id}
     defaults: { _controller: ALKWebBundle:MyArticle:show }
+    requirements:
+        id: \d*
 
 alk_newarticle:
     pattern: /page/new
@@ -19,8 +21,14 @@ alk_deletearticle:
     defaults: { _controller: ALKWebBundle:MyArticle:remove }
 
 alk_listallarticles:
-    pattern: /page/
-    defaults: { _controller: ALKWebBundle:MyArticle:listAll }
+    pattern: /page/list/
+    defaults: { _controller: ALKWebBundle:MyArticle:listAll, tag: "Default"}
+
+alk_listarticleswithtags:
+    pattern: /page/list/{tag}
+    defaults: { _controller: ALKWebBundle:MyArticle:listAll, tag: "Default"}
+    # requirements:
+    #     page: \d*
 
 ALKWebBundle_article:
         resource: "@ALKWebBundle/Resources/config/routing/article.yml"

@@ -1,0 +1,11 @@
+{% extends 'ALKWebBundle::weblayout.html.twig' %}
+
+{% block title %}List of articles{% endblock %}
+
+{% block body %}
+
+{% for article in articles %}
+	{% include 'ALKWebBundle:MyArticles:showpage.html.twig' %}
+{% endfor %}
+
+{% endblock %}
