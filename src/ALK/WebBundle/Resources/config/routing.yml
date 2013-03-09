@@ -3,25 +3,29 @@ alk_web_homepage:
     defaults: { _controller: ALKWebBundle:Default:index }
 
 alk_article:
-    pattern:  /read/{id}
+    pattern:  /page/{id}
     defaults: { _controller: ALKWebBundle:MyArticle:show }
 
 alk_newarticle:
-    pattern: /myarticle/new
+    pattern: /page/new
     defaults: { _controller: ALKWebBundle:MyArticle:edit }
 
 alk_editarticle:
-    pattern: /myarticle/edit/{id}
+    pattern: /page/edit/{id}
     defaults: { _controller: ALKWebBundle:MyArticle:edit }
 
 alk_deletearticle:
-    pattern: /myarticle/del/{id}
+    pattern: /page/del/{id}
     defaults: { _controller: ALKWebBundle:MyArticle:remove }
+
+alk_listallarticles:
+    pattern: /page/
+    defaults: { _controller: ALKWebBundle:MyArticle:listAll }
 
 ALKWebBundle_article:
         resource: "@ALKWebBundle/Resources/config/routing/article.yml"
-        prefix:   /article
+        prefix:   /auto_article
 
 alk_article_rss:
-    pattern: /myarticle/rss
+    pattern: /page/rss
     defaults: { _controller: ALKWebBundle:RSS:articleRssGenerate }

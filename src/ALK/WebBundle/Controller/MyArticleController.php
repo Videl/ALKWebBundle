@@ -16,7 +16,6 @@ class MyArticleController extends Controller
 {
 	public function showAction($id, $_locale)
 	{
-
 		$em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('ALKWebBundle:Article')->find($id);
@@ -27,7 +26,7 @@ class MyArticleController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ALKWebBundle:Default:onearticle.html.twig', array(
+        return $this->render('ALKWebBundle:MyArticles:onearticle.html.twig', array(
             'article'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
 	}
@@ -82,6 +81,12 @@ class MyArticleController extends Controller
 	{
 		return $this->redirect($this->generateUrl('alk_web_homepage'));
 	}
+
+    public function listAllAction()
+    {
+
+    }
+
 
     private function createDeleteForm($id)
     {
