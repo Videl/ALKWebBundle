@@ -2,15 +2,20 @@
 
 {% block body %}
 	<div class="hero-unit">
-		<p><h2>{{ article.title }}</h2> {% trans %}écrit le{% endtrans %} {{ article.Date|date("d/m/y") }}</p>
+		<p>
+			<h2>{{ article.title }}</h2>
+			<small> {% trans %}écrit le{% endtrans %} {{ article.Date|date("d/m/y") }}. Catégories : {% for tag in article.category %} {{ tag.name|lower }} {% endfor %}</small>
+		</p>
 		<p>
 			{% if article.Body is not empty %}
 				{{ article.Body|raw }}
+
 			{% else %}
 				{% trans %}Désolé, cette page n'existe pas encore dans votre langue.<br />
 				Souhaitez-vous proposer une traduction ?{% endtrans %}
 			{% endif %}
 		</p>
+</p>
 	</div>
 	<p><ul>
 	    <li><form action="{{ path('article_delete', { 'id': article.id }) }}" method="post">

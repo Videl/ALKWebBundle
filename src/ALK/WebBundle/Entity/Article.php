@@ -60,7 +60,7 @@ class Article
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="ALK\WebBundle\Entity\Category")
+     * @ORM\ManyToMany(targetEntity="ALK\WebBundle\Entity\Category", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $category;
