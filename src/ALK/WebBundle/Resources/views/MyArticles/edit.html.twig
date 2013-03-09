@@ -32,6 +32,9 @@
             {% trans %}Retour à la liste{% endtrans %}
         </a>
     </li>
+    <li>
+        <a href="#" id="add_category">Ajouter une catégorie</a>
+    </li>
     {% if article.id %}
     <li class="delete">
         <form action="{{ path('alk_deletearticle', { 'id': article.id }) }}" method="post">
@@ -48,18 +51,43 @@
 {% block javascripts_more %}
 {{ parent() }}
 <script type="text/javascript">
-    a2lix_libJS.translationsTabsModule.init({
-        activeLocale : "{{ app.request.locale }}"
+
+    // a2lix_libJS.translationsTabsModule.init({
+    //     activeLocale : "{{ app.request.locale }}"
+    // });
+    // a2lix_libJS.collectionModule.init({
+    //     $context : $('#articleForm'),
+    //     callbacks : {
+    //         afterAddEntry : function($newEntry) {
+    //             a2lix_libJS.translationsTabsModule.init({
+    //                 $context : $newEntry
+    //             });
+    //         }
+    //     }
+    // });
+
+$(document).ready(function() {
+    var $container = $('#alk_webbundle_articletype_category');
+
+    function add_category() {
+        index = $container.children().length;
+
+        // On ajoute à la fin de la balise <div> le contenu de l'attribut « data-prototype »,
+        // après avoir remplacé la variable $$name$$ qu'il contient par le numéro du champ.
+        $container.append(
+            $($container.attr('data-prototype').replace(/\$\$name\$\$/g, index))
+        );
+    }
+
+    // On ajoute un premier champ directement s'il n'en existe pas déjà un.
+    if($container.children().length == 0) {
+        add_category();
+    }
+
+    // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+    $('#add_category').click(function() {
+        add_category();
     });
-    a2lix_libJS.collectionModule.init({
-        $context : $('#articleForm'),
-        callbacks : {
-            afterAddEntry : function($newEntry) {
-                a2lix_libJS.translationsTabsModule.init({
-                    $context : $newEntry
-                });
-            }
-        }
-    });
+});
 </script>
 {% endblock %}

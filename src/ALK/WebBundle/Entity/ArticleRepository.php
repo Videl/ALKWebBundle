@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArticleRepository extends EntityRepository
 {
+	public function findTitleById($id)
+	{
+		$repository = $this->getDoctrine()
+    		->getRepository('ALKWebBundle:Article');
+
+		$query = $repository->createQueryBuilder()
+			->select('partial Article.{title}')
+			->where('id = :id')
+			->setParameter('id', $id)
+			->getQuery();
+
+	    try {
+	        return $query->getSingleResult();
+	    } catch (\Doctrine\ORM\NoResultException $e) {
+	        return null;
+	    }
+	}
 }

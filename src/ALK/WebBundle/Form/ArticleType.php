@@ -42,6 +42,10 @@ class ArticleType extends AbstractType
                 //'locales' => $correctedLanguages,
                  'locales' => $this->allLanguages
                 )*/
+            )
+            ->add('category', 'collection', array('type'    => new CategoryType(),
+                                                    'prototype' => true,
+                                                    'allow_add' => true)
             );
     }
 

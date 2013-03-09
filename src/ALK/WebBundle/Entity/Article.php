@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Translatable\Translatable;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * Article
  *
@@ -60,10 +59,18 @@ class Article
     private $translations;
 
 
+    /**
+     * @ORM\ManyToMany(targetEntity="ALK\WebBundle\Entity\Category")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $category;
+
+
     public function __construct()
     {
         $this->Date = new \Datetime();
         $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -191,4 +198,37 @@ class Article
         $this->translations->removeElement($translation);
     }
 
+
+    /**
+     * Add category
+     *
+     * @param \ALK\WebBundle\Entity\Category $category
+     * @return Article
+     */
+    public function addCategory(\ALK\WebBundle\Entity\Category $category)
+    {
+        $this->category[] = $category;
+    
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \ALK\WebBundle\Entity\Category $category
+     */
+    public function removeCategory(\ALK\WebBundle\Entity\Category $category)
+    {
+        $this->category->removeElement($category);
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }
