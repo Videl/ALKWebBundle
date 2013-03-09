@@ -29,4 +29,18 @@ class ArticleRepository extends EntityRepository
 	        return null;
 	    }
 	}
+
+	public function myFindAllArticles()
+    {
+        $qb = $this->createQueryBuilder('a');
+        $qb->add('orderBy', 'a.id DESC');
+
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function myLastArticle()
+    {
+        return $this->findBy(array(), array('id'=>'DESC'), 1);
+    }
 }
