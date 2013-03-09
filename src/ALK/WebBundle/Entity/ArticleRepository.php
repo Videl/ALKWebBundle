@@ -43,4 +43,18 @@ class ArticleRepository extends EntityRepository
     {
         return $this->findBy(array(), array('id'=>'DESC'), 1);
     }
+
+
+    public function myFindByTags(array $nom_tags)
+    {
+        $qb = $this->createQueryBuilder('a');
+
+        $qb ->join('a.tags', 't')
+            ->where($qb->expr()->in('t.name', $nom_tags))
+            ->add('orderBy', 'a.id DESC');
+
+        return $qb->getQuery()
+                   ->getResult();
+    }
+
 }
