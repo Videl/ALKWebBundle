@@ -10,16 +10,16 @@
                        '@ALKWebBundle/Resources/public/alix/css/a2lix_translation.css'  -->
             <link rel="stylesheet" href="{{ asset_url }}" media="screen" />
         {% endstylesheets %}
+        {% block more_stylesheets %}
+        {% endblock %}
         <link rel="alternate" type="application/rss+xml" title="Videled's {{ app.request.locale }} Articles" href="{{ url('alk_article_rss') }}" />
     </head>
     <body>
         {% block navbar %}
         {% endblock %}
 
-        <div class="fluid">
         {% block body %}
         {% endblock %}
-        </div>
 
 <!-- 
             '@ALKWebBundle/Resources/public/alix/js/a2lix_translation.js' -->

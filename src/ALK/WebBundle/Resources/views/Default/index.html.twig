@@ -1,8 +1,35 @@
 {% extends 'ALKWebBundle::weblayout.html.twig' %}
 
+
+{% block more_stylesheets %}
+<style>
+.pull-center {
+	text-align: center;
+}
+</style>
+{% endblock %}
+
 {% block body %}
-	<div class="hero-unit">
-		<h1>Hello, world!</h1>
-		<p>We are currently on the index.html.twig page.</p>
+<div class="container-fluid">
+	<div class="row-fluid pull-center">
+		<div class="span4">
+			<h2>Heading</h2>
+			<p>Salut les amis</p>
+		</div>
+		<div class="span4">
+			<h2>Heading</h2>
+			<p>Salut les amis</p>
+		</div>
+		<div class="span4">
+			<h2>Heading</h2>
+			<p>Salut les amis</p>
+		</div>
 	</div>
+
+	<div class="hero-unit">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+	</div>
+</div>
 {% endblock %}
