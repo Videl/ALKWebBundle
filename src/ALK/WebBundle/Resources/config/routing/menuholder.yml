@@ -1,0 +1,30 @@
+menuholder:
+    pattern:  /
+    defaults: { _controller: "ALKWebBundle:MenuHolder:index" }
+
+menuholder_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ALKWebBundle:MenuHolder:show" }
+
+menuholder_new:
+    pattern:  /new
+    defaults: { _controller: "ALKWebBundle:MenuHolder:new" }
+
+menuholder_create:
+    pattern:  /create
+    defaults: { _controller: "ALKWebBundle:MenuHolder:create" }
+    requirements: { _method: post }
+
+menuholder_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ALKWebBundle:MenuHolder:edit" }
+
+menuholder_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ALKWebBundle:MenuHolder:update" }
+    requirements: { _method: post }
+
+menuholder_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ALKWebBundle:MenuHolder:delete" }
+    requirements: { _method: post }

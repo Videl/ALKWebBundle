@@ -34,6 +34,12 @@ ALKWebBundle_article:
         resource: "@ALKWebBundle/Resources/config/routing/article.yml"
         prefix:   /auto_article
 
+
+ALKWebBundle_menuholder:
+    resource: "@ALKWebBundle/Resources/config/routing/menuholder.yml"
+    prefix:   /menuholder
+
+
 alk_article_rss:
     pattern: /page/rss
     defaults: { _controller: ALKWebBundle:RSS:articleRssGenerate }
