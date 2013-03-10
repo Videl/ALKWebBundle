@@ -18,7 +18,7 @@
 			<h2>
 				{% if menu.target == "alk_article" %}
 				<a href="{{ path(menu.target, {'id': menu.targetid}) }}">
-				{% else if menu.target == "alk_listarticleswithtags" %}
+				{% elseif menu.target == "alk_listarticleswithtags" %}
 				<a href="{{ path(menu.target, {'tag': menu.targetid}) }}">
 				{% else %}
 				<a href="please configure {{ menu.target }}">
