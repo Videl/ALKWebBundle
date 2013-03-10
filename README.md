@@ -5,7 +5,7 @@ This document contains information on how to install, and start
 using the Bundle.
 
 
-1) How does the Bundle works ?
+1) What are this Bundle's dependencies ?
 -------------------------------
 
 This Bundle should be configured with :
@@ -28,3 +28,12 @@ You should read every Bundle's documentation, at least to know how they work. He
     }
 }
 ```
+3) How does the menu in this Bundle works ?
+-------------------------------------------
+When inputting a new menu, you can choose a few different things :
+- Name : what will be used as headline
+- Description : what will be used as the headline's description
+- UrlType : basically, whether it's an article, a category or something. Inputting the route's name is much better.
+- Url : what will be used as first argument. Only one argument allowed for now.
+- Location : where should the link appear on the index page. I choosed 0 as the first horizontal menu right below the nav-bar.
+- Priority : Should reflect the order of the menus. Need to implement a sort algorithm before one uses it. (MenuHolderController.php)
