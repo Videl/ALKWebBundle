@@ -2,44 +2,20 @@ alk_web_homepage:
     pattern:  /
     defaults: { _controller: ALKWebBundle:Default:index }
 
-alk_article:
-    pattern:  /page/{id}
-    defaults: { _controller: ALKWebBundle:MyArticle:show }
-    requirements:
-        id: \d*
-
-alk_newarticle:
-    pattern: /page/new
-    defaults: { _controller: ALKWebBundle:MyArticle:edit }
-
-alk_editarticle:
-    pattern: /page/edit/{id}
-    defaults: { _controller: ALKWebBundle:MyArticle:edit }
-
-alk_deletearticle:
-    pattern: /page/del/{id}
-    defaults: { _controller: ALKWebBundle:MyArticle:remove }
-
-alk_listallarticles:
-    pattern: /page/list/
-    defaults: { _controller: ALKWebBundle:MyArticle:listAll, tag: "Default"}
-
-alk_listarticleswithtags:
-    pattern: /page/list/{tag}
-    defaults: { _controller: ALKWebBundle:MyArticle:listAll, tag: "Default"}
-    # requirements:
-    #     page: \d*
 
 ALKWebBundle_article:
         resource: "@ALKWebBundle/Resources/config/routing/article.yml"
-        prefix:   /auto_article
+        prefix:   /admin/article
 
 
 ALKWebBundle_menuholder:
     resource: "@ALKWebBundle/Resources/config/routing/menuholder.yml"
-    prefix:   /menuholder
+    prefix:   /admin/menuholder
 
 
 alk_article_rss:
     pattern: /page/rss
     defaults: { _controller: ALKWebBundle:RSS:articleRssGenerate }
+
+alk_admin_logout:
+    pattern: /admin/logout

@@ -28,6 +28,12 @@
           <li class="active"><a href="#">{% trans %}Accueil{% endtrans %}</a></li>
           <li><a href="#about">{% trans %}En savoir plus{% endtrans %}</a></li>
           <li><a href="#contact">{% trans %}Contact{% endtrans %}</a></li>
+          <li><a href="{{ path('alk_newarticle') }}">{% trans %}Nouvel article{% endtrans %}</a></li>
+          <li><a href="{{ path('menuholder') }}">{% trans %}Gérer les menus{% endtrans %}</a></li>
+          {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ path('alk_admin_logout') }}">{% trans %}Déconnexion{% endtrans %}</a></li>
+          {% endif %}
+
         </ul>
         {% endblock %}
       </div><!--/.nav-collapse -->
