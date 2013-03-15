@@ -105,7 +105,7 @@ class MenuHolderController extends Controller
 
         $translatableListener = $this->get('stof_doctrine_extensions.listener.translatable');
         $translatableListener->setTranslatableLocale($translatableListener->getDefaultLocale());
-        
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('ALKWebBundle:MenuHolder')->find($id);
@@ -130,6 +130,13 @@ class MenuHolderController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+
+        
+        // Force defaultLocale into the translatableListener (Can be set by AOP for all new/edit method)
+
+        $translatableListener = $this->get('stof_doctrine_extensions.listener.translatable');
+        $translatableListener->setTranslatableLocale($translatableListener->getDefaultLocale());
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('ALKWebBundle:MenuHolder')->find($id);
