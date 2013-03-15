@@ -5,3 +5,7 @@ services:
 #    alk_web.example:
 #        class: %alk_web.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    alk_web.twig.markdown_extension:
+        class: ALK\WebBundle\Twig\MarkdownExtension
+        tags:
+            - { name: twig.extension }

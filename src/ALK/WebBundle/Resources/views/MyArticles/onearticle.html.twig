@@ -4,7 +4,7 @@
 </p>
 <p>
 	{% if article.Body is not empty %}
-		{{ article.Body|raw }}
+		{{ article.Body|markdown|raw }}
 
 	{% else %}
 		{% trans %}Désolé, cette page n'existe pas encore dans votre langue.{% endtrans %}<br />
