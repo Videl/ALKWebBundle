@@ -10,39 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ArticleType extends AbstractType
 {
-    /*
-    protected $myLocale;
-    protected $allLanguages;
-
-
-    public function __construct($var = "fr", $allLanguages = array('fr', 'en'))
-    {
-        $this->myLocale = $var;
-        $this->allLanguages = $allLanguages;
-    }*/
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // $correctedLanguages = "";
-
-        // $languages = $this->allLanguages;
-        // foreach($languages as $lang)
-        // {
-        //     if($lang != $this->myLocale)
-        //         $correctedLanguages = $correctedLanguages . $lang . ' ';
-        // }
-        // $correctedLanguages = trim($correctedLanguages);
-        // $correctedLanguages = explode(" ", $correctedLanguages);
-
         $builder
             ->add('title')
             ->add('Body')
             ->add('Date', 'date', array('widget' => 'single_text'))
-            ->add('translations', 'a2lix_translations'/*, array(
-                //'locales' => $correctedLanguages,
-                 'locales' => $this->allLanguages
-                )*/
-            )
+            ->add('translations', 'a2lix_translations')
             ->add('category', 'collection', array('type'    => new CategoryType(),
                                                     'prototype' => true,
                                                     'allow_add' => true)

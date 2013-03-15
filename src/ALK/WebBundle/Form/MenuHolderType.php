@@ -13,6 +13,7 @@ class MenuHolderType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
+            ->add('translations', 'a2lix_translations')
             ->add('urlType')
             ->add('url')
             ->add('location')
