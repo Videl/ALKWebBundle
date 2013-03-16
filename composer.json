@@ -9,7 +9,7 @@
         "symfony/symfony": "2.1.*",
         "stof/doctrine-extensions-bundle": "dev-master",
         "jms/i18n-routing-bundle": "dev-master",
-        "a2lix/translation-form-bundle": "dev-master"
+        "a2lix/translation-form-bundle": "dev-sf2.3*"
     },
     "authors": [
         {
