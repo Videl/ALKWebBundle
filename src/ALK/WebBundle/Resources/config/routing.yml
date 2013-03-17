@@ -2,6 +2,27 @@ alk_web_homepage:
     pattern:  /
     defaults: { _controller: ALKWebBundle:Default:index }
 
+alk_article:
+    pattern:  /page/{id}
+    defaults: { _controller: ALKWebBundle:MyArticle:show }
+    requirements:
+        id: \d*
+
+alk_listallarticles:
+    pattern: /page/list/
+    defaults: { _controller: ALKWebBundle:MyArticle:listAll, tag: "Default"}
+
+alk_listarticleswithtags:
+    pattern: /page/list/{tag}
+    defaults: { _controller: ALKWebBundle:MyArticle:listAll, tag: "Default"}
+    # requirements:
+    #     page: \d*
+
+alk_article_rss:
+    pattern: /page/rss
+    defaults: { _controller: ALKWebBundle:RSS:articleRssGenerate }
+
+# ALL ROUTES BELOW ARE SECURED BY FIREWALL
 
 ALKWebBundle_article:
         resource: "@ALKWebBundle/Resources/config/routing/article.yml"
@@ -11,11 +32,6 @@ ALKWebBundle_article:
 ALKWebBundle_menuholder:
     resource: "@ALKWebBundle/Resources/config/routing/menuholder.yml"
     prefix:   /admin/menuholder
-
-
-alk_article_rss:
-    pattern: /page/rss
-    defaults: { _controller: ALKWebBundle:RSS:articleRssGenerate }
 
 alk_admin_logout:
     pattern: /admin/logout

@@ -1,3 +1,5 @@
+# ALL ROUTES BELOW ARE SECURED BY FIREWALL
+
 menuholder:
     pattern:  /
     defaults: { _controller: "ALKWebBundle:MenuHolder:index" }

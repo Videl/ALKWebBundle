@@ -1,9 +1,4 @@
-
-alk_article:
-    pattern:  /page/{id}
-    defaults: { _controller: ALKWebBundle:MyArticle:show }
-    requirements:
-        id: \d*
+# ALL ROUTES BELOW ARE SECURED BY FIREWALL
 
 alk_newarticle:
     pattern: /page/new
@@ -16,16 +11,6 @@ alk_editarticle:
 alk_deletearticle:
     pattern: /page/del/{id}
     defaults: { _controller: ALKWebBundle:MyArticle:remove }
-
-alk_listallarticles:
-    pattern: /page/list/
-    defaults: { _controller: ALKWebBundle:MyArticle:listAll, tag: "Default"}
-
-alk_listarticleswithtags:
-    pattern: /page/list/{tag}
-    defaults: { _controller: ALKWebBundle:MyArticle:listAll, tag: "Default"}
-    # requirements:
-    #     page: \d*
 
 article:
     pattern:  /
