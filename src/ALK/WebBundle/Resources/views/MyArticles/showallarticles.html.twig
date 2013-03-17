@@ -5,7 +5,9 @@
 {% block body %}
 
 {% for article in articles %}
-	{% include 'ALKWebBundle:MyArticles:showpage.html.twig' %}
+	<div class="hero-unit">
+	{% include 'ALKWebBundle:MyArticles:onearticle.html.twig' %}
+	</div>
 {% endfor %}
 
 {% endblock %}
