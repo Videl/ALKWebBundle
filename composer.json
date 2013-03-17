@@ -4,6 +4,15 @@
     "keywords": ["website", "translation", "symfony2"],
     "homepage": "https://github.com/Videl/ALKWebBundle",
     "license": "MIT",
+    "minimum-stability" : "dev",
+    "authors": [
+        {
+            "name": "Videl Smith",
+            "email": "videled@gmail.com",
+	    "homepage": "http://videl.fslhome.org",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.1.*",
@@ -11,16 +20,8 @@
 	"jms/i18n-routing-bundle": "1.1.*@dev",
 	"a2lix/translation-form-bundle": "dev-master"
     },
-    "authors": [
-        {
-            "name": "Videl Smith",
-            "email": "videled@gmail.com",
-            "role": "Developer"
-        }
-    ],
-    "extra": {
-        "symfony-app-dir": "app",
-        "symfony-web-dir": "web"
+    "autoload": {
+	"psr-0": { "ALK\\WebBundle": ""}
     },
-    "minimum-stability" : "dev"
+    "target-dir": "ALK/WebBundle"
 }
