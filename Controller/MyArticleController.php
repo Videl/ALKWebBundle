@@ -32,6 +32,24 @@ class MyArticleController extends Controller
             ));
 	}
 
+    public function showWithSlugAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('ALKWebBundle:Article')->myFindBySlug($slug);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Article entity.');
+        }
+
+         $deleteForm = $this->createDeleteForm($entity->getId());
+
+        return $this->render('ALKWebBundle:MyArticles:showpageadmin.html.twig', array(
+            'article'      => $entity,
+            'delete_form' => $deleteForm->createView(),        
+            ));
+    }
+
 	public function editAction($id = null)
 	{
         // Force defaultLocale into the translatableListener (Can be set by AOP for all new/edit method)

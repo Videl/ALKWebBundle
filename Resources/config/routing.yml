@@ -2,6 +2,10 @@ alk_web_homepage:
     pattern:  /
     defaults: { _controller: ALKWebBundle:Default:index }
 
+alk_article_slug:
+    pattern: /{slug}
+    defaults: { _controller: ALKWebBundle:MyArticle:showWithSlug}
+
 alk_article:
     pattern:  /page/{id}
     defaults: { _controller: ALKWebBundle:MyArticle:show }

@@ -3,6 +3,8 @@
 namespace ALK\WebBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * ArticleRepository
@@ -42,6 +44,25 @@ class ArticleRepository extends EntityRepository
     public function myLastArticle()
     {
         return $this->findBy(array(), array('id'=>'DESC'), 1);
+    }
+
+    public function myFindBySlug($slug)
+    {
+
+        $query = $this->getEntityManager()
+        ->createQuery('
+            SELECT a FROM ALKWebBundle:Article a
+            WHERE a.slug = :slug')
+        ->setParameter('slug', $slug)
+        ->setHint(\Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER, 
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
+
+        try {
+            return $query->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
     }
 
 

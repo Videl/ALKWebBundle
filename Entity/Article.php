@@ -65,6 +65,12 @@ class Article
      */
     private $category;
 
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=false)
+     */
+    private $slug;
+
 
     public function __construct()
     {
@@ -232,4 +238,27 @@ class Article
         return $this->category;
     }
 
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Article
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 }
