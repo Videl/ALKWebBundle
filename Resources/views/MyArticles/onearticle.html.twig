@@ -1,6 +1,6 @@
 <p>
 	<h2><a href="{{ path('alk_article', {'id': article.id }) }}">{{ article.title }}</a></h2>
-	<small> {% trans %}écrit le{% endtrans %} {{ article.Date|date("d/m/y") }}. {% if article.category|length > 0 %} {% trans %}Catégories{% endtrans %} : {% for tag in article.category %} {{ tag.name|lower }} {% endfor %}{% endif %}</small>
+	<small> {% trans %}écrit le{% endtrans %} {{ article.Date|date("d/m/y") }}. {% if article.category|length > 0 %} {% if article.category|length > 1 %} {% trans %}Catégories{% endtrans %}{% else %}{% trans %}Catégorie{% endtrans %}{% endif %} : {% for tag in article.category %} {{ tag.name|lower }} {% endfor %}{% endif %}</small>
 </p>
 <p>
 	{% if article.Body is not empty %}
