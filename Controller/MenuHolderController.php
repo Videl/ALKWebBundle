@@ -85,6 +85,8 @@ class MenuHolderController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->setFlash('notice', 'New menu \''. $entity->getName() .'\' added !');
+
             return $this->redirect($this->generateUrl('menuholder_show', array('id' => $entity->getId())));
         }
 
@@ -153,6 +155,8 @@ class MenuHolderController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->setFlash('notice', 'Menu \''. $entity->getName() .'\' updated !');
+
             return $this->redirect($this->generateUrl('menuholder_edit', array('id' => $id)));
         }
 
@@ -182,6 +186,8 @@ class MenuHolderController extends Controller
 
             $em->remove($entity);
             $em->flush();
+
+            $this->get('session')->setFlash('notice', 'Menu \''. $entity->getName() .'\' deleted !');
         }
 
         return $this->redirect($this->generateUrl('menuholder'));

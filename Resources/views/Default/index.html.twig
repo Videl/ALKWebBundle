@@ -10,7 +10,7 @@
 {% endblock %}
 
 
-{% block body %}
+{% block top_menu %}
 <div class="container-fluid">
 	<div class="row-fluid pull-center">
 		{% for menu in menuTop %}
@@ -31,9 +31,11 @@
 		</div>
 		{% endfor %}
 	</div>
+</div>
+{% endblock %}
 
-	<div class="hero-unit">
-        {% include 'ALKWebBundle:MyArticles:onearticle.html.twig' ignore missing with {'article': articleMenu} only %}
-	</div>
+{% block body %}
+<div class="hero-unit">
+    {% include 'ALKWebBundle:MyArticles:onearticle.html.twig' ignore missing with {'article': articleMenu} only %}
 </div>
 {% endblock %}

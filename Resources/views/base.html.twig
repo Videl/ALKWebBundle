@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}ALKWebBundle{% endblock %}</title>
         <!-- Bootstrap -->
 
         {% stylesheets '@ALKWebBundle/Resources/public/bootstrap/css/bootstrap.min.css'
@@ -18,8 +18,24 @@
         {% block navbar %}
         {% endblock %}
 
+        {% block top_menu %}
+        {% endblock %}
+
+        <div class="container">
+
+        {% block flash %}
+            {% for type in ['info', 'success', 'error', 'notice'] %}
+                {% for message in app.session.flashbag.get(type) %}
+                    <div class="alert alert-{{ type }}">
+                        {{ message|trans }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endblock %}
+
         {% block body %}
         {% endblock %}
+        </div>
 
 <!-- 
             '@ALKWebBundle/Resources/public/alix/js/a2lix_translation.js' -->

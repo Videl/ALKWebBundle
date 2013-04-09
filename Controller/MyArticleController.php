@@ -26,6 +26,7 @@ class MyArticleController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
+
         return $this->render('ALKWebBundle:MyArticles:showpageadmin.html.twig', array(
             'article'      => $entity,
             'delete_form' => $deleteForm->createView(),        
@@ -73,14 +74,15 @@ class MyArticleController extends Controller
         }
 
         $request = $this->getRequest();
-        $editForm = $this->createForm(new ArticleType(/*$request->getLocale(), $this->container->getParameter("languages")*/), $entity);
+        $editForm = $this->createForm(new ArticleType(), $entity);
         if ('POST' === $request->getMethod()) {
             $editForm->bindRequest($request);
 
             if ($editForm->isValid()) {
                 $em->persist($entity);
                 $em->flush();
-                //$this->get('session')->setFlash('notice', ($id ? 'Edited!' : 'Created!'));
+
+                $this->get('session')->setFlash('info', ($id ? 'Edited!' : 'Created!'));
 
                 return $this->redirect($this->generateUrl('alk_article', array('id' => $entity->getId())));
             }
@@ -98,6 +100,18 @@ class MyArticleController extends Controller
 
 	public function deleteAction($id)
 	{
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('ALKWebBundle:Article')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Article entity.');
+        }
+
+        $this->get('session')->setFlash('info', 'Deleted ' . $entity->getTitle() . '.');
+
+        $em->remove($entity);
+        $em->flush();
+    
 		return $this->redirect($this->generateUrl('alk_web_homepage'));
 	}
 
