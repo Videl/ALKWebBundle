@@ -26,7 +26,7 @@
 					{{ menu.name }}
 				</a>
 			</h2>
-
+			<img src="{{ menu.image ? menu.image : 'http://placehold.it/150x100.png' }}" alt="Titre" />
 			<p>{{ menu.description }}</p>
 		</div>
 		{% endfor %}

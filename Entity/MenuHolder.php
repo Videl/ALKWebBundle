@@ -69,6 +69,14 @@ class MenuHolder
      */
     private $priority;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255)
+     */
+    private $image;
+
+
      /**
      * @ORM\OneToMany(
      *     targetEntity="ALK\WebBundle\Entity\Translation\MenuHolderTranslation",
@@ -277,6 +285,30 @@ class MenuHolder
     public function removeTranslation($translation)
     {
         $this->translations->removeElement($translation);
+    }
+
+    
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Article
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
 }

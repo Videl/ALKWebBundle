@@ -40,7 +40,7 @@ class Article
      * @Gedmo\Translatable
      */
     private $Body;
-
+    
     /**
      * @var \DateTime
      *
@@ -231,4 +231,5 @@ class Article
     {
         return $this->category;
     }
+
 }

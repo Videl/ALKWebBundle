@@ -26,7 +26,8 @@ class DefaultController extends Controller
         		'name' => $objectMenu->getName(),
         		'description' => $objectMenu->getDescription(),
         		'target' => ($objectMenu->getUrlType() == 'article' ? 'alk_article' : 'alk_listarticleswithtags'),
-        		'targetid' => $objectMenu->getUrl()
+        		'targetid' => $objectMenu->getUrl(),
+                'image' => $objectMenu->getImage()
         		);
 
         	if($objectMenu->getLocation() == 0)

@@ -18,6 +18,7 @@ class MenuHolderType extends AbstractType
             ->add('url')
             ->add('location')
             ->add('priority')
+            ->add('image')
         ;
     }
 
