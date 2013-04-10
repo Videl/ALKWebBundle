@@ -4,7 +4,7 @@
 {% block body %}
 	<div class="hero-unit">
 
-		<h1>Article/{{ article.id ? 'Modifier'|trans : 'Créer'|trans }}</h1>
+		<h1>Article/{{ article.id ? 'Edit'|trans : 'Create'|trans }}</h1>
 
 <form action="{{ article.id ? path('alk_editarticle', { 'id': article.id }) : path('alk_newarticle') }}" method="post" {{ form_enctype(editForm) }} id="articleForm">
     
@@ -22,7 +22,7 @@
     {{ form_rest(editForm) }}    
         
     <p>
-        <button type="submit">{{ article.id ? 'Modifier'|trans : 'Créer'|trans }}</button>
+        <button type="submit">{{ article.id ? 'Edit'|trans : 'Create'|trans }}</button>
     </p>
 </form>
 

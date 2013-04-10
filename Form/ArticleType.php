@@ -19,7 +19,9 @@ class ArticleType extends AbstractType
             ->add('translations', 'a2lix_translations')
             ->add('category', 'collection', array('type'    => new CategoryType(),
                                                     'prototype' => true,
-                                                    'allow_add' => true)
+                                                    'allow_add' => true,
+                                                    'allow_delete' => true,
+                                                    'required' => false)
             );
     }
 
